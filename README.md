@@ -577,13 +577,13 @@ The rulebook panel used to view the uploaded PDF and locate the referenced pages
 
 The built-in numerical score calculator for managing player scores.
 
-![Score Calculator](screenshots/score_calculator.png)
+![Score Calculator](screenshots/score_calculator.jpg)
 
 ### 7. Adding a new game
 
 Adding a new game which isnt available in the website.
 
-![Score Calculator](screenshots/addgame.png)
+![addgame](screenshots/addgame.jpg)
 
 ---
 
