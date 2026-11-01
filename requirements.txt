@@ -1,0 +1,39 @@
+# Flask
+flask
+
+# Environment variables
+python-dotenv
+
+# Structured validation
+pydantic>=2
+
+# LangChain
+langchain
+langchain-community
+langchain-text-splitters
+
+# Gemini LLM and embeddings
+langchain-google-genai>=4.0.0
+
+# Agent workflow
+langgraph
+
+# Vector database
+faiss-cpu
+
+# PDF extraction
+pypdf
+pymupdf
+
+# Image processing
+pillow
+
+# Data inspection
+pandas
+jupyter
+ipykernel
+
+# Optional alternative provider
+# Install later only if testing Groq:
+# langchain-groq
+fonttools

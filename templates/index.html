@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>BoardBrain</title>
+
+    <link rel="icon" type="image/png" href="/static/images/boardbrainlogo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="/static/css/style.css">
+
+</head>
+
+<body>
+
+    <div class="background-grid"></div>
+    <div class="background-glow"></div>
+
+    <div class="app-shell">
+
+        <!-- ================================================= -->
+        <!-- GLOBAL HEADER -->
+        <!-- ================================================= -->
+
+        <header class="topbar">
+
+            <button
+                class="brand"
+                id="brandButton"
+                type="button"
+            >
+                <span class="brand-mark">B</span>
+
+                <span class="brand-copy">
+                    <span class="brand-name">BOARDBRAIN</span>
+                    <span class="brand-subtitle">THE RULEBOOK COMPANION</span>
+                </span>
+            </button>
+
+            <nav class="top-navigation">
+                <button
+                    class="nav-link active"
+                    id="libraryNav"
+                    type="button"
+                >
+                    GAME LIBRARY
+                </button>
+
+                <span class="nav-divider"></span>
+
+                <span class="online-indicator">
+                    <span class="online-dot"></span>
+                    SYSTEM ONLINE
+                </span>
+            </nav>
+
+            <button
+                class="primary-button upload-header-button"
+                id="openUploadButton"
+                type="button"
+            >
+                <span class="button-symbol">＋</span>
+                ADD RULEBOOK
+            </button>
+
+        </header>
+
+
+        <!-- ================================================= -->
+        <!-- MAIN CONTENT -->
+        <!-- ================================================= -->
+
+        <main class="main-content">
+
+            <!-- ============================================= -->
+            <!-- LIBRARY VIEW -->
+            <!-- ============================================= -->
+
+            <section
+                id="libraryView"
+                class="library-view"
+            >
+
+                <div class="hero-section">
+
+                    <div class="hero-content">
+
+                        <div class="eyebrow">
+                            <span class="eyebrow-line"></span>
+                            YOUR TABLE. YOUR RULES.
+                        </div>
+
+                        <h1>
+                            PLAY THE GAME.
+                            <span>KNOW THE RULES.</span>
+                        </h1>
+
+                        <p class="hero-description">
+                            Your intelligent companion for game rules,
+                            tricky situations, strategy and everything
+                            happening around the table.
+                        </p>
+
+                        <div class="hero-actions">
+
+                            <button
+                                class="primary-button hero-button"
+                                id="heroUploadButton"
+                                type="button"
+                            >
+                                UPLOAD A RULEBOOK
+                                <span>↗</span>
+                            </button>
+
+                            <span class="hero-note">
+                                PDF SUPPORTED · CUSTOM GAMES WELCOME
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="hero-art">
+
+                        <div class="art-orbit orbit-one"></div>
+                        <div class="art-orbit orbit-two"></div>
+
+                        <div class="art-center">
+                            <span class="art-b">B</span>
+                            <span class="art-zero">0</span>
+                        </div>
+
+                        <div class="floating-tag tag-top">
+                            <span class="tag-dot"></span>
+                            RULES ENGINE
+                        </div>
+
+                        <div class="floating-tag tag-bottom">
+                            RAG · AI · STRATEGY
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- LIBRARY SECTION -->
+
+                <section class="library-section">
+
+                    <div class="section-heading">
+
+                        <div>
+                            <div class="eyebrow">
+                                <span class="eyebrow-line"></span>
+                                YOUR COLLECTION
+                            </div>
+
+                            <h2>GAME LIBRARY</h2>
+
+                            <p>
+                                Choose a game to enter its dedicated workspace.
+                            </p>
+                        </div>
+
+                        <div class="library-count">
+                            <span id="gameCount">03</span>
+                            <small>GAMES</small>
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="games-grid"
+                        id="gamesGrid"
+                    >
+
+                        <!-- Game cards are rendered by app.js -->
+
+                        <div class="loading-card">
+                            LOADING GAME LIBRARY...
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="library-error"
+                        id="libraryError"
+                        hidden
+                    ></div>
+
+                </section>
+
+
+                <!-- FOOTER -->
+
+                <footer class="library-footer">
+
+                    <span>BOARDBRAIN © 2026</span>
+
+                    <span>
+                        POWERED BY GEMINI · BUILT FOR THE GAME
+                    </span>
+
+                    <span>V1.0.0</span>
+
+                </footer>
+
+            </section>
+
+
+            <!-- ============================================= -->
+            <!-- GAME WORKSPACE -->
+            <!-- ============================================= -->
+
+            <section
+                id="workspaceView"
+                class="workspace-view"
+                hidden
+            >
+
+                <!-- WORKSPACE HEADER -->
+
+                <div class="workspace-header">
+
+                    <div class="workspace-title-area">
+
+                        <button
+                            class="back-button"
+                            id="backToLibraryButton"
+                            type="button"
+                            aria-label="Back to library"
+                        >
+                            ←
+                        </button>
+
+                        <div class="workspace-game-icon">
+                            <span id="workspaceGameInitial">C</span>
+                        </div>
+
+                        <div class="workspace-game-title">
+
+                            <div class="workspace-breadcrumb">
+                                GAME LIBRARY / WORKSPACE
+                            </div>
+
+                            <h2 id="workspaceGameName">
+                                CATAN
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="workspace-header-actions">
+
+                        <span
+                            class="status-pill"
+                            id="workspaceStatus"
+                        >
+                            <span class="status-dot"></span>
+                            NO RULEBOOK
+                        </span>
+
+                        <button
+                            class="secondary-button"
+                            id="workspaceUploadButton"
+                            type="button"
+                        >
+                            REPLACE RULEBOOK
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- WORKSPACE THREE-COLUMN LAYOUT -->
+
+                <div class="workspace-layout">
+
+
+                    <!-- LEFT INFORMATION SIDEBAR -->
+
+                    <aside class="workspace-sidebar left-sidebar">
+
+                        <div class="sidebar-section">
+
+                            <div class="sidebar-label">
+                                GAME INFORMATION
+                            </div>
+
+                            <div class="game-info-card">
+
+                                <div class="game-info-name">
+                                    <span id="sidebarGameName">
+                                        CATAN
+                                    </span>
+
+                                    <span class="tiny-tag">
+                                        ACTIVE
+                                    </span>
+                                </div>
+
+                                <div class="game-info-meta">
+                                    YOUR PERSONAL GAME SPACE
+                                </div>
+
+                                <div class="sidebar-divider"></div>
+
+                                <div class="info-row">
+                                    <span>RULEBOOK</span>
+                                    <strong id="sidebarRulebookStatus">
+                                        NOT UPLOADED
+                                    </strong>
+                                </div>
+
+                                <div class="info-row">
+                                    <span>PAGES</span>
+                                    <strong id="sidebarPageCount">
+                                        —
+                                    </strong>
+                                </div>
+
+                                <div class="info-row">
+                                    <span>KNOWLEDGE BASE</span>
+                                    <strong id="sidebarIndexStatus">
+                                        INACTIVE
+                                    </strong>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="sidebar-section">
+
+                            <div class="sidebar-label">
+                                QUICK ACCESS
+                            </div>
+
+                            <button
+                                class="sidebar-action"
+                                id="openRulebookButton"
+                                type="button"
+                            >
+                                <span class="action-icon">▤</span>
+
+                                <span>
+                                    <strong>RULEBOOK</strong>
+                                    <small>Read original PDF</small>
+                                </span>
+
+                                <span class="action-arrow">↗</span>
+                            </button>
+
+
+                            <button
+                                class="sidebar-action"
+                                id="openNotesButton"
+                                type="button"
+                            >
+                                <span class="action-icon">✎</span>
+
+                                <span>
+                                    <strong>MY NOTES</strong>
+                                    <small>Personal game notes</small>
+                                </span>
+
+                                <span class="action-arrow">↗</span>
+                            </button>
+
+
+                            <button
+                                class="sidebar-action"
+                                id="openCalculatorButton"
+                                type="button"
+                            >
+                                <span class="action-icon">∑</span>
+
+                                <span>
+                                    <strong>SCORE CALCULATOR</strong>
+                                    <small>Calculate player totals</small>
+                                </span>
+
+                                <span class="action-arrow">↗</span>
+                            </button>
+
+                        </div>
+
+
+                        <div class="sidebar-tip">
+
+                            <span class="tip-symbol">i</span>
+
+                            <div>
+                                <strong>BOARD TIP</strong>
+
+                                <p>
+                                    Ask about a specific situation
+                                    and BoardBrain will look for
+                                    supporting rulebook passages.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </aside>
+
+
+                    <!-- CENTRAL CHAT: REMAINS MOUNTED -->
+
+                    <section
+                        class="chat-panel"
+                        id="chatPanel"
+                    >
+
+                        <div class="chat-header">
+
+                            <div>
+
+                                <div class="chat-header-title">
+                                    <span class="chat-status-dot"></span>
+                                    BOARD BRAIN ASSISTANT
+                                </div>
+
+                                <p>
+                                    ASK QUESTIONS. SETTLE THE RULES.
+                                </p>
+
+                            </div>
+
+                            <div class="chat-model-tag">
+                                GEMINI
+                            </div>
+
+                        </div>
+
+
+                        <!-- CHAT MESSAGES -->
+
+                        <div
+                            class="chat-messages"
+                            id="chatMessages"
+                            aria-live="polite"
+                        >
+
+                            <div class="welcome-message">
+
+                                <div class="welcome-mark">
+                                    B<span>0</span>
+                                </div>
+
+                                <div class="welcome-eyebrow">
+                                    YOUR TABLESIDE COMPANION
+                                </div>
+
+                                <h3>
+                                    Ready when you are.
+                                </h3>
+
+                                <p>
+                                    Ask me about game rules, special
+                                    situations, turn order or strategy.
+                                    I'll use the uploaded rulebook
+                                    whenever possible.
+                                </p>
+
+                                <div class="suggestion-list">
+
+                                    <button
+                                        class="suggestion-chip"
+                                        type="button"
+                                        data-question="How do I set up this game?"
+                                    >
+                                        HOW DO I SET UP?
+                                    </button>
+
+                                    <button
+                                        class="suggestion-chip"
+                                        type="button"
+                                        data-question="Explain the turn sequence."
+                                    >
+                                        EXPLAIN THE TURN
+                                    </button>
+
+                                    <button
+                                        class="suggestion-chip"
+                                        type="button"
+                                        data-question="What are the special rules?"
+                                    >
+                                        SPECIAL RULES
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- CHAT COMPOSER -->
+
+                        <div class="chat-composer-area">
+
+                            <div
+                                class="chat-upload-warning"
+                                id="chatUploadWarning"
+                            >
+                                Upload and process a rulebook to start
+                                asking game-specific questions.
+                            </div>
+
+                            <form
+                                class="chat-composer"
+                                id="chatForm"
+                            >
+
+                                <textarea
+                                    id="chatInput"
+                                    placeholder="Ask BoardBrain anything about the game..."
+                                    rows="1"
+                                    maxlength="5000"
+                                    required
+                                ></textarea>
+
+                                <button
+                                    class="send-button"
+                                    id="sendButton"
+                                    type="submit"
+                                    aria-label="Send message"
+                                >
+                                    ↗
+                                </button>
+
+                            </form>
+
+                            <div class="composer-footer">
+
+                                <span>
+                                    ANSWERS ARE GROUNDED IN YOUR RULEBOOK
+                                </span>
+
+                                <span>
+                                    ENTER TO SEND · SHIFT + ENTER FOR NEW LINE
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- RIGHT REFERENCES SIDEBAR -->
+
+                    <aside class="workspace-sidebar right-sidebar">
+
+                        <div class="sidebar-section">
+
+                            <div class="reference-heading">
+
+                                <div>
+                                    <div class="sidebar-label">
+                                        KNOWLEDGE BASE
+                                    </div>
+
+                                    <h3>
+                                        RULE REFERENCES
+                                    </h3>
+                                </div>
+
+                                <span
+                                    class="reference-count"
+                                    id="referenceCount"
+                                >
+                                    00
+                                </span>
+
+                            </div>
+
+                            <p class="reference-description">
+                                Sources used to support the latest answer
+                                will appear here.
+                            </p>
+
+                            <div
+                                class="references-list"
+                                id="referencesList"
+                            >
+
+                                <div class="empty-references">
+                                    <span>▤</span>
+
+                                    <p>
+                                        No references yet.
+                                        Ask a question to see
+                                        supporting rulebook pages.
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="sidebar-section right-tools">
+
+                            <div class="sidebar-label">
+                                TABLE TOOLS
+                            </div>
+
+                            <button
+                                class="tool-shortcut"
+                                id="rightCalculatorButton"
+                                type="button"
+                            >
+                                <span>∑</span>
+                                SCORE CALCULATOR
+                                <small>OPEN</small>
+                            </button>
+
+                            <button
+                                class="tool-shortcut"
+                                id="rightNotesButton"
+                                type="button"
+                            >
+                                <span>✎</span>
+                                GAME NOTES
+                                <small>OPEN</small>
+                            </button>
+
+                        </div>
+
+                    </aside>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- UPLOAD MODAL -->
+    <!-- ===================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="uploadModal"
+        hidden
+    >
+
+        <div
+            class="modal-card upload-modal-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="uploadModalTitle"
+        >
+
+            <div class="modal-header">
+
+                <div>
+                    <div class="eyebrow">
+                        <span class="eyebrow-line"></span>
+                        EXPAND YOUR LIBRARY
+                    </div>
+
+                    <h2 id="uploadModalTitle">
+                        ADD A RULEBOOK
+                    </h2>
+                </div>
+
+                <button
+                    class="close-button"
+                    id="closeUploadModal"
+                    type="button"
+                    aria-label="Close"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="upload-step-indicator">
+
+                <div
+                    class="step active"
+                    id="uploadStepIndicator1"
+                >
+                    <span>01</span>
+                    <small>UPLOAD PDF</small>
+                </div>
+
+                <div class="step-line"></div>
+
+                <div
+                    class="step"
+                    id="uploadStepIndicator2"
+                >
+                    <span>02</span>
+                    <small>SELECT GAME</small>
+                </div>
+
+            </div>
+
+
+            <!-- STEP 1 -->
+
+            <div
+                class="upload-step-content"
+                id="uploadStep1"
+            >
+
+                <h3>
+                    Choose your game rulebook.
+                </h3>
+
+                <p>
+                    Upload the official PDF. You will select
+                    which game it belongs to in the next step.
+                </p>
+
+                <label
+                    class="file-drop-zone"
+                    for="rulebookFile"
+                    id="fileDropZone"
+                >
+
+                    <input
+                        id="rulebookFile"
+                        type="file"
+                        accept=".pdf,application/pdf"
+                        hidden
+                    >
+
+                    <span class="file-upload-icon">↑</span>
+
+                    <strong id="fileDropTitle">
+                        DROP YOUR PDF HERE
+                    </strong>
+
+                    <span id="fileDropSubtitle">
+                        OR CLICK TO BROWSE FILES
+                    </span>
+
+                    <span class="file-limit">
+                        PDF · MAXIMUM 30 MB
+                    </span>
+
+                </label>
+
+
+                <div
+                    class="selected-file"
+                    id="selectedFile"
+                    hidden
+                >
+                    <span class="file-icon">PDF</span>
+
+                    <div>
+                        <strong id="selectedFileName"></strong>
+                        <small id="selectedFileSize"></small>
+                    </div>
+                </div>
+
+
+                <div
+                    class="modal-error"
+                    id="uploadError"
+                    hidden
+                ></div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        class="secondary-button"
+                        id="cancelUploadStep1"
+                        type="button"
+                    >
+                        CANCEL
+                    </button>
+
+                    <button
+                        class="primary-button"
+                        id="continueUploadButton"
+                        type="button"
+                        disabled
+                    >
+                        CONTINUE →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 2 -->
+
+            <div
+                class="upload-step-content"
+                id="uploadStep2"
+                hidden
+            >
+
+                <h3>
+                    Which game is this for?
+                </h3>
+
+                <p>
+                    Choose an existing game or create a new
+                    custom game workspace.
+                </p>
+
+
+                <label
+                    class="field-label"
+                    for="gameSelection"
+                >
+                    SELECT A GAME
+                </label>
+
+                <select
+                    id="gameSelection"
+                    class="form-select"
+                >
+                    <option value="catan">Catan</option>
+                    <option value="uno">UNO</option>
+                    <option value="monopoly">Monopoly</option>
+                    <option value="__custom__">My game isn't listed</option>
+                </select>
+
+
+                <div
+                    id="customGameField"
+                    class="custom-game-field"
+                    hidden
+                >
+
+                    <label
+                        class="field-label"
+                        for="customGameName"
+                    >
+                        CUSTOM GAME NAME
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customGameName"
+                        class="form-input"
+                        maxlength="100"
+                        placeholder="Enter the name of your game"
+                    >
+
+                </div>
+
+
+                <div class="upload-summary">
+                    <span class="summary-icon">PDF</span>
+
+                    <div>
+                        <strong id="uploadSummaryFilename">
+                            RULEBOOK.PDF
+                        </strong>
+
+                        <small>
+                            READY FOR PROCESSING
+                        </small>
+                    </div>
+                </div>
+
+
+                <div
+                    class="modal-error"
+                    id="assignError"
+                    hidden
+                ></div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        class="secondary-button"
+                        id="backUploadStepButton"
+                        type="button"
+                    >
+                        ← BACK
+                    </button>
+
+                    <button
+                        class="primary-button"
+                        id="processRulebookButton"
+                        type="button"
+                    >
+                        PROCESS RULEBOOK
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROCESSING -->
+
+            <div
+                class="upload-processing"
+                id="uploadProcessing"
+                hidden
+            >
+
+                <div class="processing-orbit">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="eyebrow">
+                    BUILDING KNOWLEDGE BASE
+                </div>
+
+                <h3>
+                    Learning the rules.
+                </h3>
+
+                <p id="processingMessage">
+                    Extracting the PDF, creating chunks
+                    and building the game index.
+                </p>
+
+                <div class="processing-bar">
+                    <span></span>
+                </div>
+
+                <small>
+                    KEEP THIS WINDOW OPEN WHILE PROCESSING
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- TOOL DRAWER -->
+    <!-- ===================================================== -->
+
+    <div
+        class="drawer-backdrop"
+        id="drawerBackdrop"
+        hidden
+    ></div>
+
+
+    <aside
+        class="tool-drawer"
+        id="toolDrawer"
+        aria-label="Workspace tools"
+        hidden
+    >
+
+        <div class="drawer-header">
+
+            <div>
+                <div class="eyebrow">
+                    BOARD BRAIN TOOLS
+                </div>
+
+                <h2 id="drawerTitle">
+                    RULEBOOK
+                </h2>
+            </div>
+
+            <button
+                class="close-button"
+                id="closeDrawerButton"
+                type="button"
+                aria-label="Close panel"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- PDF VIEWER -->
+
+        <section
+            class="drawer-panel"
+            id="rulebookDrawerPanel"
+            hidden
+        >
+
+            <div class="drawer-panel-info">
+                <strong id="viewerFilename">
+                    RULEBOOK.PDF
+                </strong>
+
+                <span id="viewerPageInfo">
+                    ORIGINAL PDF
+                </span>
+            </div>
+
+            <iframe
+                id="rulebookFrame"
+                title="Uploaded game rulebook"
+                src="about:blank"
+            ></iframe>
+
+        </section>
+
+
+        <!-- NOTES -->
+
+        <section
+            class="drawer-panel"
+            id="notesDrawerPanel"
+            hidden
+        >
+
+            <p class="drawer-description">
+                Keep track of house rules, reminders
+                and anything useful for your next game.
+            </p>
+
+            <form id="noteForm">
+
+                <textarea
+                    id="noteInput"
+                    rows="4"
+                    maxlength="5000"
+                    placeholder="Write a new game note..."
+                    required
+                ></textarea>
+
+                <button
+                    class="primary-button drawer-submit-button"
+                    type="submit"
+                >
+                    SAVE NOTE
+                </button>
+
+            </form>
+
+            <div
+                class="notes-list"
+                id="notesList"
+            >
+                <div class="empty-notes">
+                    NO NOTES SAVED YET.
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- SCORE CALCULATOR -->
+
+        <section
+            class="drawer-panel"
+            id="scoreDrawerPanel"
+            hidden
+        >
+
+            <p class="drawer-description">
+                Enter each player's score. BoardBrain
+                will calculate totals and identify the
+                highest score. Scoring categories are
+                entirely user-defined.
+            </p>
+
+            <div class="calculator-heading">
+                <span>PLAYER</span>
+                <span>SCORE</span>
+                <span></span>
+            </div>
+
+            <div
+                class="score-players"
+                id="scorePlayers"
+            >
+
+                <div class="score-player-row">
+
+                    <input
+                        class="score-player-name"
+                        type="text"
+                        placeholder="Player 1"
+                        value="Player 1"
+                    >
+
+                    <input
+                        class="score-player-value"
+                        type="number"
+                        value="0"
+                    >
+
+                    <button
+                        class="remove-player-button"
+                        type="button"
+                        disabled
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
+                <div class="score-player-row">
+
+                    <input
+                        class="score-player-name"
+                        type="text"
+                        placeholder="Player 2"
+                        value="Player 2"
+                    >
+
+                    <input
+                        class="score-player-value"
+                        type="number"
+                        value="0"
+                    >
+
+                    <button
+                        class="remove-player-button"
+                        type="button"
+                        disabled
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="add-player-button"
+                id="addPlayerButton"
+                type="button"
+            >
+                ＋ ADD PLAYER
+            </button>
+
+
+            <button
+                class="primary-button drawer-submit-button"
+                id="calculateScoresButton"
+                type="button"
+            >
+                CALCULATE TOTALS
+            </button>
+
+
+            <div
+                class="score-results"
+                id="scoreResults"
+                hidden
+            ></div>
+
+        </section>
+
+    </aside>
+
+
+    <!-- APP JAVASCRIPT -->
+
+    <script src="/static/js/app.js" defer></script>
+
+
+</body>
+
+</html>

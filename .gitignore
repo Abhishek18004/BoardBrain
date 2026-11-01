@@ -1,0 +1,35 @@
+# Virtual environment
+.venv/
+venv/
+
+# Environment files
+.env
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Uploaded PDFs
+uploads/*
+!uploads/.gitkeep
+
+# Original PDF documents
+documents/*.pdf
+
+# Vector indexes
+vector_db/*
+!vector_db/.gitkeep
+
+# SQLite database
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE
+.vscode/
+
+# Logs
+*.log
