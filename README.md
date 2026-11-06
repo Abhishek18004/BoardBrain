@@ -8,6 +8,92 @@ The application supports both predefined board games and custom games. Players c
 
 ---
 
+## Using BoardBrain
+
+### 1. Select a Game
+
+Choose one of the predefined games:
+
+- Catan
+- UNO
+- Monopoly
+
+Alternatively, upload a rulebook for a custom board game.
+
+### 2. Add a Custom Game
+
+1. Select the rulebook PDF.
+2. Choose **My game isn't listed**.
+3. Enter the custom game's name.
+4. Process the uploaded rulebook.
+5. Open the game workspace.
+
+The application processes the PDF using the same document ingestion, embedding, FAISS indexing, and retrieval pipeline used for the predefined games.
+
+### 3. Ask Questions
+
+Open a game's workspace and enter a question about its rules.
+
+BoardBrain retrieves relevant rulebook sections and generates an answer with page references.
+
+### 4. Manage Notes
+
+Open the Notes section to save, view, and delete notes associated with the selected game.
+
+### 5. Calculate Scores
+
+Open the Score Calculator to add players, enter numerical scores, and calculate the totals and winners.
+
+---
+
+## Screenshots
+
+The following screenshots demonstrate the main application interface and its functionality.
+
+### 1. Home Page
+
+The initial BoardBrain home screen, displaying the available board games and the option to add a custom game.
+
+![BoardBrain Home Page](screenshots/homepage.jpg)
+
+### 2. Game Library
+
+The initial BoardBrain game library, displaying the available board games and the option to add a custom game.
+
+![BoardBrain Home Page](screenshots/gamelibrary.jpg)
+
+### 3. Game Workspace
+
+The main workspace where users can interact with the AI rulebook assistant.
+
+![Game Workspace](screenshots/game_workspace.jpg)
+
+### 4. AI Chat Assistant
+
+A demonstration of the AI-generated response, including relevant rulebook page references.
+
+![AI Chat Assistant](screenshots/chat_assistant.jpg)
+
+### 5. Rulebook Viewer
+
+The rulebook panel used to view the uploaded PDF and locate the referenced pages.
+
+![Rulebook Viewer](screenshots/rulebook_viewer.jpg)
+
+### 6. Score Calculator
+
+The built-in numerical score calculator for managing player scores.
+
+![Score Calculator](screenshots/score_calculator.jpg)
+
+### 7. Adding a new game
+
+Adding a new game which isnt available in the website.
+
+![addgame](screenshots/addgame.jpg)
+
+---
+
 ## Features
 
 ### 1. AI-Powered Rulebook Assistant
@@ -400,44 +486,6 @@ On initial startup, the application initializes its SQLite database and seeds th
 
 ---
 
-## Using BoardBrain
-
-### 1. Select a Game
-
-Choose one of the predefined games:
-
-- Catan
-- UNO
-- Monopoly
-
-Alternatively, upload a rulebook for a custom board game.
-
-### 2. Add a Custom Game
-
-1. Select the rulebook PDF.
-2. Choose **My game isn't listed**.
-3. Enter the custom game's name.
-4. Process the uploaded rulebook.
-5. Open the game workspace.
-
-The application processes the PDF using the same document ingestion, embedding, FAISS indexing, and retrieval pipeline used for the predefined games.
-
-### 3. Ask Questions
-
-Open a game's workspace and enter a question about its rules.
-
-BoardBrain retrieves relevant rulebook sections and generates an answer with page references.
-
-### 4. Manage Notes
-
-Open the Notes section to save, view, and delete notes associated with the selected game.
-
-### 5. Calculate Scores
-
-Open the Score Calculator to add players, enter numerical scores, and calculate the totals and winners.
-
----
-
 ## Data Persistence and Resetting Custom Games
 
 One of BoardBrain's key advantages is that the game library is stored locally instead of being recreated every time the application starts.
@@ -536,54 +584,6 @@ BoardBrain/
 ```
 
 **Note:** `boardbrain.db` is generated automatically when the application initializes the database. The `vector_db` subdirectories are generated when rulebooks are processed. You do not need to manually create these files or indexes.
-
----
-
-## Screenshots
-
-The following screenshots demonstrate the main application interface and its functionality.
-
-### 1. Home Page
-
-The initial BoardBrain home screen, displaying the available board games and the option to add a custom game.
-
-![BoardBrain Home Page](screenshots/homepage.jpg)
-
-### 2. Game Library
-
-The initial BoardBrain game library, displaying the available board games and the option to add a custom game.
-
-![BoardBrain Home Page](screenshots/gamelibrary.jpg)
-
-### 3. Game Workspace
-
-The main workspace where users can interact with the AI rulebook assistant.
-
-![Game Workspace](screenshots/game_workspace.jpg)
-
-### 4. AI Chat Assistant
-
-A demonstration of the AI-generated response, including relevant rulebook page references.
-
-![AI Chat Assistant](screenshots/chat_assistant.jpg)
-
-### 5. Rulebook Viewer
-
-The rulebook panel used to view the uploaded PDF and locate the referenced pages.
-
-![Rulebook Viewer](screenshots/rulebook_viewer.jpg)
-
-### 6. Score Calculator
-
-The built-in numerical score calculator for managing player scores.
-
-![Score Calculator](screenshots/score_calculator.jpg)
-
-### 7. Adding a new game
-
-Adding a new game which isnt available in the website.
-
-![addgame](screenshots/addgame.jpg)
 
 ---
 
